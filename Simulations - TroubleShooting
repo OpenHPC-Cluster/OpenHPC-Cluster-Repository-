@@ -1,0 +1,5 @@
+20/05/2026
+
+Issue 1:-
+Bottlenecked by storage space utilized by the Simple Sieve of Erathosthenes, using O(n) space.
+Inefficient for very large/ slighlty larger numbers.
