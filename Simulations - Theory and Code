@@ -1,0 +1,57 @@
+20/05/2026
+Creating a Simple sieve of Eratosthenes in python (juypiter library), to find primes up to a range n
+
+____________________________________________________________________________________________________
+import math
+
+# Simple Sieve of Eratosthenes that creates an array of all primes 
+# in a range n and returns the greatest prime in that range n 
+def sieve(n):
+ 
+    # Creates a list of lenth n, and marks all indexes aside from 0 and 1 as True
+    arr = [True for i in range(n+1)]
+    arr[0], arr[1] = False
+
+    # Parses through a range of 2 untill sqrt(n), and treats all values
+    # still marked True in the list as primes. Then it goes through the
+    # range till n and marks all multiple of prime values as False in list arr
+    for i in range(2, int(math.sqrt(n+1))):
+        if arr[i]:
+            for j in range(i**2, n+1, i):
+                arr[j] = False
+
+    # Creates an array of all prime numbers untill n,
+    # taking indexes marked as True as Primes.
+    primes = []
+    for i in range(1, n+1):
+        if arr[i]:
+            primes.append(i)
+    
+    # Returns number of primes in range n, as well as the largest prime:
+    return len(primes), primes[-1]
+
+____________________________________________________________________________________________________
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
