@@ -31,8 +31,8 @@ def sieve(n):
     return len(primes), primes[-1]
 
 ____________________________________________________________________________________________________
-
-     
+Time complexity - O(n log log n)
+Space complexity - O(n)
 
 
 
