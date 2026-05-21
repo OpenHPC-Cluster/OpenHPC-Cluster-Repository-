@@ -3,3 +3,8 @@
 Issue 1:-
 Bottlenecked by storage space utilized by the Simple Sieve of Erathosthenes, using O(n) space.
 Inefficient for very large/ slighlty larger numbers.
+
+20/05/2026
+FIXED Issue 1:-
+Switched from python list to numpy arrays to optomize for large values of n. Space complexity is
+still O(n), but numpy lists allocate one continuous space in memory.
