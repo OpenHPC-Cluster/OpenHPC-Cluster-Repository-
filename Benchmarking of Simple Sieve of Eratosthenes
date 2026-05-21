@@ -28,3 +28,34 @@ Using a range of 10^9:
   runtime (in juypiter): 2m 23.3s
 ____________________________________
 
+
+
+
+21/05/2026
+Benchmatking the updated Sieve of Eratosthenes (with numpy arrays).
+____________________________________
+Using a range of 10^6:
+  number of primes found: 78,498
+  largest prime: 999,983
+  runtime (in juypiter): 0.0s
+____________________________________
+Using a range of 10^7:
+  number of primes found: 664,579
+  largest prime: 9,999,991
+  runtime (in juypiter): 0.0s
+____________________________________
+Using a range of 10^8:
+  number of primes found: 5,761,455
+  largest prime: 99,999,989
+  runtime (in juypiter): 0.8s
+____________________________________
+Using a range of 10^9:
+  number of primes found: 50,847,534
+  largest prime: 999,999,937
+  runtime (in juypiter): 9.4s
+____________________________________
+Using a range of 10^10:
+  number of primes found: 455,052,511
+  largest prime: 9,999,999,967
+  runtime (in juypiter): 3m 0.5s
+____________________________________
