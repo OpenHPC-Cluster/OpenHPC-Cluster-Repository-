@@ -38,6 +38,36 @@ Space complexity - O(n)
 
 
 
+21/05/2026
+Used nympy arrays to optomize for large values of n
+
+____________________________________________________________________________________________________
+import math
+import numpy as np
+
+# Simple Sieve of Eratosthenes that creates an array of all primes 
+# in a range n and returns the greatest prime in that range n 
+def sieve(n):
+ 
+    # Creates a list of array n, and marks all indexes aside from 0 and 1 as True
+    arr = np.ones(n+1, dtype=bool)
+    arr[0:2] = False
+
+    # Parses through a range of 2 until sqrt(n), and treats all values
+    # still marked True in the array as primes. Then it goes through the
+    # range till n and marks all multiple of prime values as False in array arr
+    for p in range(2, int(math.sqrt(n)) + 1):
+        if arr[p]:
+            arr[p*p:n+1:p] = False
+
+    # Creates an list of all prime numbers until n
+    primes = np.nonzero(arr)[0].tolist()
+    
+    # Returns number of primes in range n, as well as the largest prime:
+    return len(primes), primes[-1]
+____________________________________________________________________________________________________
+Time complexity - O(n log log n)
+Space complexity - O(n)
 
 
 
