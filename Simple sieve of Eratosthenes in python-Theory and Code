@@ -74,6 +74,56 @@ Space complexity - O(n)
 
 
 
+24/05/2026
+Used mutithreading to reduce ram input and increase number of threads used. Rame went from 90%+ to 55% utilization
+____________________________________________________________________________________________________
+import math
+import numpy as np
+from concurrent.futures import ThreadPoolExecutor
+
+#Function to mark multiples of p as false in array arr until range n
+def Set_False(arr, p, n):
+    arr[p*p:n+1:p] = False
+
+def threaded_sieve(n, max_threads):
+
+    # Initializes an array untill value n and marks them True
+    arr = np.ones(n + 1, dtype=bool)
+
+    #Marks all indexes aside from 0 and 1 as False
+    arr[0:2] = False
+
+    #Sets the limit for range
+    high = int(math.sqrt(n)) + 1
+
+    #Initailizes threads according to input passed
+    with ThreadPoolExecutor(max_workers=max_threads) as executor:
+
+        threads = []
+
+        #Marks multiples of p as false and appends them to executor
+        for p in range(2, high):
+            if arr[p]:
+                threads.append(
+                    executor.submit(Set_False, arr, p, n)
+                )
+
+        # Wait for all threads
+        for f in threads:
+            f.result()
+
+    #Creates a list of primes untill n
+    primes = np.flatnonzero(arr).tolist()
+
+    #Returns number of primes and last prime
+    return len(primes), primes[-1]
+
+
+
+
+
+
+
 
 
 
