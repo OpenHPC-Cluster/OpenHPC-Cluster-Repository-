@@ -117,8 +117,9 @@ def threaded_sieve(n, max_threads):
 
     #Returns number of primes and last prime
     return len(primes), primes[-1]
-
-
+____________________________________________________________________________________________________
+Space complexity : O(n)
+Time complexity : O(n log log n)
 
 
 
