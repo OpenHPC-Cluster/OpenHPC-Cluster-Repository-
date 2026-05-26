@@ -85,7 +85,7 @@ for primality. Runtime for an average sample size of 1000 primes:
 _________________________________________________________________________________________
 
 CODE:-
-
+import random
 # Checks for primality using a miller - rabin test
 def miller_rabin(n, k):
 
