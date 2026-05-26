@@ -79,7 +79,7 @@ def findprime(loopnum):
 times = []
 primes = []
 
-# Runs the code 100 times to find 100 primes and their runtime
+# Runs the code 1000 times to find 1000 primes and their runtime
 for i in range(1000):
     start = time.perf_counter()
 
