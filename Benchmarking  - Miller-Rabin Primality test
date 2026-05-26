@@ -1,0 +1,137 @@
+26/05/2026
+
+Using a modified code to find the average runtime of finding a 1024 bit prime using a 1000 iterations:
+_____________________________________________________________________________________________________
+CODE:-
+import random
+import time
+import timeit
+import numpy as np
+
+# Checks for primality using a miller - rabin test
+def miller_rabin(n, k):
+
+    # Checks for if the number is negative, less than 4 or even. If so, return False
+    if n <= 1:
+        return False
+    if n < 4:
+        return True
+    if n % 2 == 0:
+        return False
+
+    # Turns the input n into 2^r *(d)
+    r, d = 0, n - 1
+    while d % 2 == 0:
+        r += 1
+        d //= 2
+
+    # Runs the code k times to reduce false primes to <= 4^-k
+    for i in range(k):
+
+        # Takes a random number a as a witness
+        a = random.randint(2, n - 2)
+
+        # Stores a ^ d % n in x
+        x = pow(a, d, n)
+        
+        # Tests x for the Miller Rabin test
+        if x == 1 or x == n - 1:
+            continue
+
+        # If Miller-Rabin test is failed, sqaures x, r times and if x = n-1, 
+        # returns True. Else it returns False
+        for j in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
+            return False
+            
+    return True
+
+bitsize = 1024
+loopnum = 20
+
+# Generates a random number for which it takes >17ms to test Miller Rabin primility
+def generate_prime_candidate():
+    tim = 10
+    while tim > 0.017: 
+        p = random.getrandbits(bitsize)
+        p |= (1 << (bitsize - 1)) | 1
+
+        start_time = time.perf_counter()
+        miller_rabin(p, 20)
+        end_time = time.perf_counter()
+
+        tim = end_time - start_time 
+    return p
+
+# Passes the random number and tests it for primility, If the number fails,
+# subtracts by 2 to keep it even, and prints the number if it returns prime
+def findprime(loopnum):
+    a = generate_prime_candidate()
+    while True:
+        if miller_rabin(a, loopnum):
+            return a 
+            break
+        a -= 2
+
+times = []
+primes = []
+
+# Runs the code 100 times to find 100 primes and their runtime
+for i in range(1000):
+    start = time.perf_counter()
+
+    primes.append(findprime(loopnum))
+
+    elapsed = time.perf_counter() - start
+
+    times.append(elapsed)
+
+    print(i)
+
+times = np.array(times)
+primes = np.array(primes)
+print("Avg time: ", np.average(times))
+print("largest prime: ", np.amax(primes))
+print("Runtime for the largest prime is: ", times[np.argmax(primes)])
+_____________________________________________________________________________________________________
+
+
+FOR 1024 BIT NUMBERS
+*********************************************************
+Total Runtime: 15m 39.6s
+
+Avg Runtime to find a 1024 bit prime: 0.9394519673998002s
+
+Largest prime found: 179768915309801643503810417160524945
+                     045177584882514589785377029766865213
+                     022461096140208448234152566558182754
+                     683972602160444901969319475052725572
+                     649432325944874513923144346119587436
+                     220112515815067194441256715116240254
+                     054156067477646016741142380036227246
+                     523336938179718173344683909231696978
+                     675071036805683749793 (309 digits)
+
+Runtime to find the largest prime: 0.10895900000468828s
+*********************************************************
+
+
+FOR 512 BIT NUMBERS
+*********************************************************
+Total Runtime: 1m 23.4s
+
+Avg Runtime to find a 1024 bit prime: 0.0833729708000319s
+
+Largest prime found: 134061969064794905365786539740214474
+                     278517466702714747247720872895351265
+                     545363155665232810868237703641845471
+                     246685847776339132937388853554345304
+                     02637525633 (155 digits)
+
+Runtime to find the largest prime: 0.11410999999498017s
+*********************************************************
+
+
