@@ -250,9 +250,9 @@ ________________________________________________________________________________
 
 FOR 1024 BIT PRIMES
 *********************************************************
-Total Runtime: 1m 23.4s
+Total Runtime: 14m 50.4s
 
-Avg Runtime to find a 1024 bit prime:  0.8901043336002477
+Avg Runtime to find a 1024 bit prime:  0.8901043336002477s
 
 Largest prime found: 179751917166749427544831022486191507
                      229359690140465115997401929408679311
@@ -268,5 +268,169 @@ Runtime to find the largest prime: 0.21145989999058656s
 
 *********************************************************
 
+
+27/05/2026
+
+Benchmarking multithreaded Miller Rabin Test
+_____________________________________________________________________________________________________
+
+
+CODE:-
+
+import random
+import time
+import timeit
+import numpy as np
+import concurrent.futures
+from loky import get_reusable_executor
+
+# Checks for primality using a miller - rabin test
+def miller_rabin(n, k):
+
+    # Checks for if the number is negative, less than 4 or even. If so, return False
+    if n <= 1:
+        return False
+    if n < 4:
+        return True
+    if n % 2 == 0:
+        return False
+
+    # Turns the input n into 2^r *(d)
+    r, d = 0, n - 1
+    while d % 2 == 0:
+        r += 1
+        d //= 2
+
+    # Runs the code k times to reduce false primes to <= 4^-k
+    for i in range(k):
+
+        # Takes a random number a as a witness
+        a = random.randint(2, n - 2)
+
+        # Stores a ^ d % n in x
+        x = pow(a, d, n)
+        
+        # Tests x for the Miller Rabin test
+        if x == 1 or x == n - 1:
+            continue
+
+        # If Miller-Rabin test is failed, sqaures x, r times and if x = n-1, 
+        # returns True. Else it returns False
+        for j in range(r - 1):
+            x = pow(x, 2, n)
+            if x == n - 1:
+                break
+        else:
+            return False
+            
+    return True
+
+bitsize = 1024
+loopnum = 20
+numthreads = 8
+
+
+# Generates a random number for which it takes >17ms to test Miller Rabin primility
+def generate_prime_candidate():
+    tim = 10
+    p = random.getrandbits(bitsize)
+    p |= (1 << (bitsize - 1)) | 1
+    while tim > 10: 
+        p = random.getrandbits(bitsize)
+        p |= (1 << (bitsize - 1)) | 1
+
+        start_time = time.perf_counter()
+        miller_rabin(p, 20)
+        end_time = time.perf_counter()
+
+        tim = end_time - start_time 
+    return p
+
+
+# Passes the random number and tests it for primility, If the number fails,
+# subtracts by 2 to keep it even, and prints the number if it returns prime
+def findprime(loopnum):
+    a = generate_prime_candidate()
+    while True:
+        if miller_rabin(a, loopnum):
+            return a 
+            break
+        a -= 2
+
+# Finds Primes in parallel with multithreading
+def findprime_parallel(loopnum, num_workers=numthreads):
+
+    # Creates numthreads, threads and assigns each a worker task, terminates all
+    # worker tasks as soon as first prime is found
+    with concurrent.futures.ProcessPoolExecutor(max_workers=num_workers):
+        
+        # To Prevent errors due to abrupt cancellation of threads
+        executor = get_reusable_executor(max_workers=num_workers)
+
+        # Creates a list futures with numthreads number of threads
+        futures = {executor.submit(findprime, loopnum) for x in range(num_workers)}
+
+        # Finds the first thread to find a prime
+        done, pending = concurrent.futures.wait(futures, return_when= concurrent.futures.FIRST_COMPLETED)
+        
+        # Cancel remaining threads
+        for f in pending:
+            f.cancel()
+    
+        return done.pop().result()
+
+
+def find_n_primes(n, loopnum, num_workers=numthreads):
+    executor = get_reusable_executor(max_workers=num_workers)
+    futures = [executor.submit(findprime, loopnum) for _ in range(n)]
+    return [f.result() for f in concurrent.futures.as_completed(futures)]
+
+import time
+t0 = time.perf_counter()
+primes = find_n_primes(1000, loopnum, num_workers=numthreads)
+t1 = time.perf_counter()
+
+primes = np.array(primes)
+
+print("Largest prime: ", np.amax(primes))
+print("Time: ", t1-t0)
+print("Average: ", (t1 - t0) / len(primes))
+
+_____________________________________________________________________________________________________
+
+
+FOR 1024 BIT PRIMES USING 6 CORES
+*********************************************************
+Total Runtime: 4m 2.9s
+
+Avg Runtime to find a 1024 bit prime:  0.24294904450001195s
+
+Largest prime found: 179664258368296306247517185895528527969723126870660455201660630772912777575286734890327931304023475605576064296390787400932450364144451654330713674184041120383175418895972145932538767829151787507949736185199458453482418837545873360127651341122829471544676696699207655990551960199121451352643759171004743735867
+
+*********************************************************
+
+
+
+FOR 1024 BIT PRIMES USING 8 CORES
+*********************************************************
+Total Runtime: 3m 2.5s
+
+Avg Runtime to find a 1024 bit prime:  0.1825450373000058s
+
+Largest prime found: 179543326065678252045696154800153069621159346102110503245456901484039508915779577009061599745976044880479110053634151632562719897331998469594168722292772337876177791847393485436406818959834222727224208187058288665744184390812622698625202343964703713116794217339039055079451335376065804432256915305067606742659
+
+*********************************************************
+
+
+
+FOR 1024 BIT PRIMES USING 10 CORES
+*********************************************************
+Total Runtime: 2m 45.9s
+
+Avg Runtime to find a 1024 bit prime:  0.16590022720000708s
+
+Largest prime found: 179730270541791580212781261361753592399163166668237840971345824834858504621944673418170396289858242824729066789616008976093666886185914665446427296692253986838996573989864502587335975952529411000464069908239936943054637411430692458541999162447607180364918087882351516100731033836054590755497176571390061712021
+
+*********************************************************
 
 
