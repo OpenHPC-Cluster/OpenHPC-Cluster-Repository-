@@ -4,11 +4,11 @@ OpenHPC is an open-source toolkit by the Linux Foundation used to build HPC clus
 ## The team
 ### Samuel Durai -(Project Director/Founder , Lead systems architect) 
 
-### Eric Bipin Philip -(Software, Infrastructure) 
-
 ### Shanmukha Sainath Kasireddy -(Simulations, Software)
 
-### Aayush Pal -(Simulations, software)
+### Eric Bipin Philip -(Software, Infrastructure) 
 
-### Harshit Srinivasan -(documentation and software implimentation)
+### Aayush Pal -(Simulations, Software)
+
+### Harshit Srinivasan -(documentation and Software implimentation)
 
