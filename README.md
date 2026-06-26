@@ -10,5 +10,5 @@ OpenHPC is an open-source toolkit by the Linux Foundation used to build HPC clus
 
 ### Aayush Pal -(Simulations, Software)
 
-### Harshit Srinivasan -(documentation and Software implimentation)
+### Harshit Srinivasan -(Documentation and Software implimentation)
 
