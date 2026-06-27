@@ -1,17 +1,12 @@
-# OpenHPC-Cluster
-A student-built High Performance Computing (HPC) cluster using OpenHPC and Rocky Linux for scientific computing, parallel programming, and computational research.
+### OpenHPC-Cluster
+## A student-built High Performance Computing (HPC) cluster using OpenHPC and Rocky Linux for scientific computing, parallel programming, and computational research.
 
-## The team
-### Samuel Durai -(Project Director/Founder , Lead systems architect) 
-
-### Shanmukha Sainath Kasireddy -(Simulations, Software)
-
-### Eric Bipin Philip -(Software, Infrastructure) 
-
-### Aayush Pal -(Simulations, Software)
-
-### Harshit Srinivasan -(Documentation and Software implimentation)
-
+## Team
+## Samuel Durai- Project Director/Founder • Lead Systems Architect
+## Shanmukha Sainath Kasireddy-	Simulations • Software Development
+## Eric Bipin Philip-	Software • Infrastructure
+## Aayush Pal	Simulations- • Software
+## Harshit Srinivasan-	Documentation • Software Implementation
 
 About
 
