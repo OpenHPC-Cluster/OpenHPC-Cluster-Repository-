@@ -39,14 +39,14 @@ The cluster is being developed to support:
 # Software Specifications
 
 ### Category                    Technology 
-### Operating System            Rocky Linux
-### HPC Distribution            OpenHPC
-### Resource Manager            Slurm
-### MPI Implementation          OpenMPI
-### Provisioning                Warewulf
-### File Sharing                NFS
-### Remote Access               SSH
-### Networking                  Gigabit Ethernet 
+### Operating System-            Rocky Linux
+### HPC Distribution-            OpenHPC
+### Resource Manager-            Slurm
+### MPI Implementation-          OpenMPI
+### Provisioning-                Warewulf
+### File Sharing-                NFS
+### Remote Access-               SSH
+### Networking-                  Gigabit Ethernet 
 
 # Hardware Specifications 
 
@@ -55,25 +55,25 @@ The cluster is currently deployed using repurposed desktop hardware provided by 
 ## Current Deployment 
 
 ### Component                   Specification 
-### Active Nodes                5
-### Admin Nodes                 1
-### Compute Nodes               4
-### Ethernet Switch             Cisco Catalyst 3560-cx
-### Operating System            Rocky Linux
-### HPC Distribution            OpenHPC
-### Cluster Management          Slurm
-### MPI Implementation          OpenMPI
-### Network                     Gigabit Ethernet
+### Active Nodes-                5
+### Admin Nodes-                 1
+### Compute Nodes-               4
+### Ethernet Switch-             Cisco Catalyst 3560-cx
+### Operating System-            Rocky Linux
+### HPC Distribution-            OpenHPC
+### Cluster Management-          Slurm
+### MPI Implementation-          OpenMPI
+### Network-                     Gigabit Ethernet
 
 # Admin Node
 
 ## Component         Specification 
 
-### Role              Cluster Management
-### Operating system  Rocky Linux
-### Processor         Intel i5-4460
-### RAM               16 GB DDR3
-### Services          Slurm Controller, Warewulf, NFS, SSH, OpenHPC Management Services
+### Role-              Cluster Management
+### Operating system-  Rocky Linux
+### Processor-         Intel i5-4460
+### RAM-               16 GB DDR3
+### Services-          Slurm Controller, Warewulf, NFS, SSH, OpenHPC Management Services
 
 
 ## Note- All softwares and Scientific Librabries will installed on the Admin Node ONLY
@@ -82,32 +82,32 @@ The cluster is currently deployed using repurposed desktop hardware provided by 
 
 ## Component         Specification 
 
-### Number of Nodes   4
-### Role              Parallel Computing(Each Node will be assigned a particular task by the admin node                   depending on the simulation)
-### Operating System  No operating systemc(PXE network Boot)
-### Processor         Intel i5-4460
-### RAM               16 GB DDR3 per node
+### Number of Nodes-   4
+### Role-              Parallel Computing(Each Node will be assigned a particular task by the admin node                   depending on the simulation)
+### Operating System-  No operating systemc(PXE network Boot)
+### Processor-         Intel i5-4460
+### RAM-               16 GB DDR3 per node
 
 # Aggregate Resources
 ## Resource                 Value
-### Total Active Nodes       5
-### Total Admin Nodes        1
-### Total Compute Nodes      4
-### Total RAM                80 GB DDR3
-### Network Infrastructure   Gigabit Ethernet
+### Total Active Nodes-       5
+### Total Admin Nodes-        1
+### Total Compute Nodes-      4
+### Total RAM-                80 GB DDR3
+### Network Infrastructure-   Gigabit Ethernet
                         
 # Educational Value
 
 This project provides practical experience in:
 
-High Performance Computing (HPC)
-Parallel Computing
-Distributed Systems
-Linux System Administration
-Cluster Networking
-Scientific Computing
-Performance Optimization
-Research Computing
+-High Performance Computing (HPC)
+-Parallel Computing
+-Distributed Systems
+-Linux System Administration
+-Cluster Networking
+-Scientific Computing
+-Performance Optimization
+-Research Computing
 
 # Planned Expansion
 
