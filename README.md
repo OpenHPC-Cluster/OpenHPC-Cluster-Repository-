@@ -5,7 +5,7 @@
 ## Samuel Durai- Project Director/Founder • Lead Systems Architect
 ## Shanmukha Sainath Kasireddy-	Simulations • Software Development
 ## Eric Bipin Philip-	Software • Infrastructure
-## Aayush Pal	Simulations- • Software
+## Aayush Pal-	Simulations • Software
 ## Harshit Srinivasan-	Documentation • Software Implementation
 
 # About
