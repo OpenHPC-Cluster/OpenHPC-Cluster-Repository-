@@ -7,6 +7,7 @@
 ## Eric Bipin Philip-	Software • Infrastructure
 ## Aayush Pal-	Simulations • Software
 ## Harshit Srinivasan-	Documentation • Software Implementation
+## Sanskriti Srivastava- Systems Architect • Linux administration
 
 # About
 
