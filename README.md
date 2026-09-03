@@ -2,12 +2,12 @@
 ## A student-built High Performance Computing (HPC) cluster using OpenHPC and Rocky Linux for scientific computing, parallel programming, and computational research.
 
 # Team
-## Samuel Durai- Project Director/Founder • Lead Systems Architect
-## Shanmukha Sainath Kasireddy-	Project Director/Founder • Simulations • Software[Linux-Cluster Setup]
+## Samuel Durai- Project Co-Director/Founder • Lead Systems Architect
+## Shanmukha Sainath Kasireddy-	Project Co-Director/Founder • Linux Administration
 ## Eric Bipin Philip-	Software • Infrastructure
 ## Aayush Pal-	Simulations • Software
 ## Harshit Srinivasan-	Documentation • Software Implementation
-## Sanskriti Srivastava- Systems Architect • Linux administration
+## Sanskriti Srivastava- Systems Architect • Linux Administration
 
 # About
 
