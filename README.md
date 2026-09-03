@@ -3,7 +3,7 @@
 
 # Team
 ## Samuel Durai- Project Co-Director/Founder • Lead Systems Architect
-## Shanmukha Sainath Kasireddy-	Project Co-Director/Founder • Linux Administration
+## Shanmukha Sainath Kasireddy-	Project Co-Director • Linux Administration
 ## Eric Bipin Philip-	Software • Infrastructure
 ## Aayush Pal-	Simulations • Software
 ## Harshit Srinivasan-	Documentation • Software Implementation
