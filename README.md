@@ -84,10 +84,11 @@ The cluster is currently deployed using repurposed desktop hardware provided by 
 ## Component         Specification 
 
 ### Number of Nodes-   4
-### Role-              Parallel Computing(Each Node will be assigned a particular task by the admin node                   depending on the simulation)
+### Role-              Parallel Computing(Each Node will be assigned a particular task by the admin node depending on the simulation)
 ### Operating System-  No operating systemc(PXE network Boot)
 ### Processor-         Intel i5-4460
 ### RAM-               16 GB DDR3 per node
+## Note- Slurm has been setup and configured on all nodes
 
 # Aggregate Resources
 ## Resource                 Value
