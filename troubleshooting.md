@@ -14,7 +14,7 @@ Warewulf Syntax & Flag Discrepancy
 
 Issue: Flag syntax errors (e.g., unknown flag errors) occurred when attempting to append or modify overlays via the command line using variations like --System-Overlays or --system-overlays+.
 
-Resolution: Corrected the syntax to use wwctl profile set default --system-overlays+=<overlay_name> and subsequently executed wwctl overlay build to apply changes.-[Shanmukha Sainath]
+Resolution: Corrected the syntax to use sudo wwctl profile set default --system-overlays+=<overlay_name> and subsequently executed sudo wwctl overlay build to apply changes.-[Shanmukha Sainath]
 
 ### Issue 004
 Missing Overlay Assignments
